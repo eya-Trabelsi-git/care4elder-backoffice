@@ -1,12 +1,14 @@
 import { Routes } from '@angular/router';
 import { DefaultLayoutComponent } from './layout';
-
+import { CreateInvoiceComponent } from './invoice/create-invoice/create-invoice.component';
+import { ListInvoicesComponent } from './list-invoices/list-invoices.component';
 export const routes: Routes = [
   {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'
   },
+
   {
     path: '',
     component: DefaultLayoutComponent,
@@ -17,10 +19,23 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () => import('./views/dashboard/routes').then((m) => m.routes)
-      }
-
+      },
+      // Ajouter la route 'create-invoice' dans les enfants du layout
+      {
+        path: 'create-invoice',
+        loadComponent: () => import('./invoice/create-invoice/create-invoice.component').then(m => m.CreateInvoiceComponent),
+        // Si nécessaire, protéger cette route avec un guard :
+        // canActivate: [AuthGuard]
+      },
+      {
+        path: 'list-invoice',
+        loadComponent: () => import('./list-invoices/list-invoices.component').then(m => m.ListInvoicesComponent),
+        // Si nécessaire, protéger cette route avec un guard :
+        // canActivate: [AuthGuard]
+      },
     ]
   },
+
   {
     path: '404',
     loadComponent: () => import('./views/pages/page404/page404.component').then(m => m.Page404Component),

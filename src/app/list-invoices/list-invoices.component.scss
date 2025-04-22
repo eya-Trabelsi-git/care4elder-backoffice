@@ -1,0 +1,91 @@
+.list-invoices-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+
+  h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f4f4f4;
+      color: #555;
+    }
+
+    td {
+      color: #333;
+    }
+
+    .delete-btn {
+      background-color: #f44336;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      cursor: pointer;
+      border-radius: 4px;
+
+      &:hover {
+        background-color: #e53935;
+      }
+    }
+
+    .no-invoices {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #666;
+    }
+  }
+
+  /* Styles pour les statuts */
+  .unpaid {
+    color: red;
+    font-weight: bold;
+  }
+
+  .paid {
+    color: green;
+    font-weight: bold;
+  }
+
+  .cancelled {
+    color: gray;
+    font-weight: bold;
+  }
+  .delete-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .delete-btn:hover {
+    background-color: #e60000;
+  }
+  .unpaid {
+    color: red;
+  }
+
+  .paid {
+    color: green;
+  }
+
+  .cancelled {
+    color: grey;
+  }
+
+}

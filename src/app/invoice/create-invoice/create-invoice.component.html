@@ -1,0 +1,63 @@
+<h2>Créer une Facture</h2>
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+  <label>Référence :</label>
+  <input
+    type="text"
+    name="reference"
+    [(ngModel)]="invoice.reference"
+    required
+    #reference="ngModel"
+  />
+  <div *ngIf="reference.invalid && reference.touched" class="error-message">
+    La référence est requise.
+  </div>
+
+  <label>Montant (€) :</label>
+  <input
+    type="number"
+    name="montant"
+    [(ngModel)]="invoice.amount"
+    required
+    #montant="ngModel"
+  />
+  <div *ngIf="montant.invalid && montant.touched" class="error-message">
+    Le montant est requis.
+  </div>
+
+  <label>Description :</label>
+  <textarea
+    name="description"
+    [(ngModel)]="invoice.description"
+    #description="ngModel"
+  ></textarea>
+
+  <label>Statut :</label>
+  <select name="statut" [(ngModel)]="invoice.status" required #statut="ngModel">
+    <option value="UNPAID">Non Payée</option>
+    <option value="PAID">Payée</option>
+    <option value="CANCELLED">Annulée</option>
+  </select>
+  <div *ngIf="statut.invalid && statut.touched" class="error-message">
+    Le statut est requis.
+  </div>
+
+  <label>Date d'échéance :</label>
+  <input
+    type="datetime-local"
+    name="dateEcheance"
+    [(ngModel)]="invoice.dueDate"
+    required
+    #dateEcheance="ngModel"
+  />
+  <div *ngIf="dateEcheance.invalid && dateEcheance.touched" class="error-message">
+    La date d'échéance est requise.
+  </div>
+
+  <button type="submit" [disabled]="f.invalid">Créer</button>
+</form>
+
+<!-- Affichage d'un message si le formulaire est invalide -->
+<div *ngIf="f.invalid && f.submitted" style="color: red; margin-top: 10px;">
+  ⚠️ Veuillez remplir tous les champs obligatoires.
+</div>

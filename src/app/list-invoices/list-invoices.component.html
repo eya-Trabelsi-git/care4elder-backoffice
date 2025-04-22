@@ -1,0 +1,54 @@
+<div class="list-invoices-container">
+  <h2>Liste des Factures</h2>
+  <div class="filter-container">
+    <label for="statusFilter">Filtrer par statut :</label>
+    <select id="statusFilter" [(ngModel)]="selectedStatus" (change)="filterInvoices()">
+      <option value="">Tous</option>
+      <option value="UNPAID">Impayé</option>
+      <option value="PAID">Payé</option>
+      <option value="CANCELLED">Annulé</option>
+    </select>
+  </div>
+
+  <table class="invoice-table">
+    <thead>
+    <tr>
+      <th>Référence</th>
+      <th>Montant (€)</th>
+      <th>Description</th>
+      <th>Statut</th>
+      <th>Date d'Échéance</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let invoice of filteredInvoices">
+      <td>{{ invoice.reference }}</td>
+      <td>{{ invoice.amount | currency: 'EUR' }}</td>
+      <td>{{ invoice.description }}</td>
+      <td>
+          <span
+            [ngClass]="{
+              unpaid: invoice.status === 'UNPAID',
+              paid: invoice.status === 'PAID',
+              cancelled: invoice.status === 'CANCELLED'
+            }"
+          >
+            {{ invoice.status }}
+          </span>
+      </td>
+      <td>{{ invoice.dueDate | date: 'dd/MM/yyyy' }}</td>
+      <td>
+        <button class="delete-btn" (click)="deleteFacture(invoice.id)">
+          🗑 Supprimer
+        </button>
+        <button class="edit-btn" (click)="openModifyModal(invoice)">✏ Modifier</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="invoices.length === 0" class="no-invoices">
+    <p>Aucune facture disponible.</p>
+  </div>
+</div>

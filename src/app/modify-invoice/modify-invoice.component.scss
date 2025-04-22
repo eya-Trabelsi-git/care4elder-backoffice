@@ -1,0 +1,62 @@
+.invoice-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  max-height: 70vh; /* limite la hauteur */
+  overflow-y: auto; /* permet de scroller si besoin */
+}
+
+/* Chaque ligne de champ (label + input/select) */
+.form-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Label avec largeur fixe */
+.form-group label {
+  width: 140px;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* Input et select s’adaptent à la largeur restante */
+.form-group input,
+.form-group select {
+  flex: 1;
+  padding: 8px;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Boutons */
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 12px 16px;
+}
+
+/* Titre du modal */
+mat-dialog-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+/* Boutons */
+button.mat-button {
+  color: #f44336;
+}
+
+button.mat-raised-button {
+  color: white;
+  background-color: #4caf50;
+  &:hover {
+    background-color: #45a049;
+  }
+}

@@ -11,6 +11,24 @@ export const navItems: INavData[] = [
     }
   },
 
+  {
+    name: 'facture',
+    url: '/create-invoice',
+    iconComponent: { name: 'cil-speedometer' },
+    badge: {
+      color: 'info',
+      text: 'NEW'
+    }
+  },
+  {
+    name: 'list-invoice',
+    url: '/list-invoice',
+    iconComponent: { name: 'cil-speedometer' },
+    badge: {
+      color: 'info',
+      text: 'NEW'
+    }
+  },
 
 
 ];

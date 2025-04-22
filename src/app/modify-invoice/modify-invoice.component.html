@@ -1,0 +1,43 @@
+<h1 mat-dialog-title>Modifier Facture</h1>
+
+<mat-dialog-content>
+  <form #invoiceForm="ngForm" (ngSubmit)="submitForm(invoiceForm)" class="invoice-form">
+    <div>
+      <label for="reference">Référence</label>
+      <input type="text" id="reference" name="reference" [(ngModel)]="invoice.reference" required />
+    </div>
+
+    <div>
+      <label for="montant">Montant (€)</label>
+      <input type="number" id="montant" name="montant" [(ngModel)]="invoice.amount" required />
+    </div>
+
+    <div>
+      <label for="description">Description</label>
+      <input type="text" id="description" name="description" [(ngModel)]="invoice.description" required />
+    </div>
+
+    <div>
+      <label for="statut">Statut</label>
+      <select id="statut" name="statut" [(ngModel)]="invoice.status" required>
+        <option value="UNPAID">Non payée</option>
+        <option value="PAID">Payée</option>
+        <option value="CANCELLED">Annulée</option>
+      </select>
+    </div>
+
+
+    <label for="dateEcheance">Date d'échéance :</label>
+    <input
+      type="datetime-local"
+      id="dateEcheance"
+      [(ngModel)]="invoice.dueDate"
+      name="dateEcheance"
+    />
+
+    <div mat-dialog-actions>
+
+      <button mat-raised-button color="primary" type="submit">Enregistrer</button>
+    </div>
+  </form>
+</mat-dialog-content>
